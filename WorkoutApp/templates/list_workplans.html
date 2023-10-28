@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Workout Plans</title>
+</head>
+<body>
+    <h1>List of Workout Plans</h1>
+    <ul>
+        {% for workplan in workplans %}
+            <li>
+                Plan for {{ workplan.user.name }}: 
+                <ul>
+                    {% for exercise in workplan.exercises.all %}
+                        <li>{{ exercise.name }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
