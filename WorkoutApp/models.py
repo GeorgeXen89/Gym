@@ -1,9 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-from django.db import models
-
 # User model
 class User(models.Model):
     name = models.CharField(max_length=100)
@@ -16,6 +12,9 @@ class User(models.Model):
 class Exercise(models.Model):
     name = models.CharField(max_length=100)
     muscle_group = models.CharField(max_length=100)
+    description = models.TextField()
+    sets = models.IntegerField()
+    reps = models.IntegerField()
 
     def __str__(self):
         return self.name

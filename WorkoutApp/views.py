@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Exercise
+from .forms import ExerciseForm
 
 # Create your views here.
 
@@ -19,3 +21,13 @@ def list_workplans(request):
 
 def home(request):
     return render(request, 'home.html')
+
+def new_exercise(request):
+    if request.method == 'POST':
+        form = ExerciseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('exercise_list')
+    else:
+        form = ExerciseForm()
+    return render(request, 'new_exercise.html', {'form': form})
